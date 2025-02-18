@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKGuitar - Interactive Guitar Scale Explorer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>SKGuitar <span class="version">v0.2.12</span></h1>
+        
+        <div class="controls">
+            <div class="tuning-section">
+                <label for="tuning">Tuning:</label>
+                <select id="tuning">
+                    <option value="standard">Standard (EADGBE)</option>
+                    <option value="dropD">Drop D (DADGBE)</option>
+                    <option value="openG">Open G (DGDGBD)</option>
+                    <option value="openD">Open D (DADF#AD)</option>
+                    <option value="openE">Open E (EBE♯GBE)</option>
+                    <option value="DADGAD">DADGAD</option>
+                    <option value="halfStepDown">Half Step Down (E♭A♭D♭G♭B♭E♭)</option>
+                    <option value="wholeStepDown">Whole Step Down (DGCFAD)</option>
+                    <option value="dropC">Drop C (CGCFAD)</option>
+                </select>
+            </div>
+            
+            <div class="sound-section">
+                <label for="soundType">Sound:</label>
+                <select id="soundType">
+                    <option value="acoustic">Acoustic Guitar</option>
+                    <option value="electric">Electric Guitar</option>
+                    <option value="tone">Simple Tone</option>
+                    <option value="piano">Piano</option>
+                </select>
+            </div>
+            
+            <div class="scale-section">
+                <label for="scale">Scale:</label>
+                <select id="scale">
+                    <!-- Common Scales -->
+                    <optgroup label="Common Scales">
+                        <option value="major">Major Scale</option>
+                        <option value="minor">Natural Minor Scale</option>
+                        <option value="harmonicMinor">Harmonic Minor Scale</option>
+                        <option value="melodicMinor">Melodic Minor Scale</option>
+                        <option value="pentatonicMajor">Major Pentatonic</option>
+                        <option value="pentatonicMinor">Minor Pentatonic</option>
+                        <option value="blues">Blues Scale</option>
+                    </optgroup>
+                    <!-- Modes -->
+                    <optgroup label="Modes">
+                        <option value="dorianMode">Dorian Mode</option>
+                        <option value="phrygianMode">Phrygian Mode</option>
+                        <option value="lydianMode">Lydian Mode</option>
+                        <option value="mixolydianMode">Mixolydian Mode</option>
+                        <option value="locrianMode">Locrian Mode</option>
+                    </optgroup>
+                    <!-- Advanced Scales -->
+                    <optgroup label="Advanced Scales">
+                        <option value="wholeTone">Whole Tone Scale</option>
+                        <option value="diminished">Diminished Scale</option>
+                        <option value="augmented">Augmented Scale</option>
+                        <option value="chromatic">Chromatic Scale</option>
+                    </optgroup>
+                </select>
+            </div>
+
+            <div class="mode-section">
+                <label>Mode:</label>
+                <button id="scaleMode" class="active">Scale Mode</button>
+                <button id="findMode">Find Scale Mode</button>
+                <div class="tuner-toggle">
+                    <label for="tunerMode">Tuner Mode:</label>
+                    <input type="checkbox" id="tunerMode">
+                </div>
+            </div>
+        </div>
+
+        <div id="guitar-neck" class="guitar-neck"></div>
+
+        <div id="info-panel" class="info-panel">
+            <p>Click on any note to hear it and see information.</p>
+            <div id="selected-notes"></div>
+            <div id="frequency-info"></div>
+            <div id="scale-info"></div>
+        </div>
+    </div>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script> -->
+    <script src="{{ url_for('static', filename='js/deps/Tone.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/guitar.js') }}"></script>
+</body>
+</html>
