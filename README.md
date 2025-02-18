@@ -1,4 +1,4 @@
-# SKGuitar - Interactive Guitar Scale Explorer (v0.2.11)
+# SKGuitar - Interactive Guitar Scale Explorer (v0.2.12)
 
 SKGuitar is a web application that provides an interactive guitar fretboard for exploring scales, notes, and musical theory. It features a virtual guitar neck where you can click on notes, hear them played, and explore different scales and tunings.
 
@@ -164,9 +164,11 @@ The script will:
   - Tone: Basic synthesizer
   - Piano: Sampler with real piano samples
 
-## TODO List
+## TODO List 
 
-- [ ] Add more tuning options (Open G, Open D, etc.)
+This is a list of maybes.
+
+- [x] Add more tuning options (Open G, Open D, etc.)
 - [ ] Implement chord recognition and display
 - [ ] Add MIDI support for external instruments
 - [ ] Include a metronome feature
@@ -181,8 +183,9 @@ The script will:
 
 ## Changelog
 
-### v0.2.11
+### v0.2.12
 - Further adjusted fret marker positions:
+  - Fixed horizontal spacing
   - Increased vertical offset to 300% of string spacing
   - Made markers 20% more transparent (opacity 0.64)
   - Improved visual balance with strings and notes
