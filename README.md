@@ -1,6 +1,6 @@
 # SKGuitar - Interactive Guitar Scale Explorer (v0.2.13)
 
-SKGuitar is a web application that provides an interactive guitar fretboard for exploring scales, notes, and musical theory. It features a virtual guitar neck where you can click on notes, hear them played, and explore different scales and tunings.
+🎸 SKGuitar is a web application that provides an interactive guitar fretboard for exploring scales, notes, and musical theory. It features a virtual guitar neck where you can click on notes, hear them played, and explore different scales and tunings.
 
 ## Features
 
@@ -108,7 +108,7 @@ The script will:
 
 3. Open your browser and navigate to:
    ```
-   http://localhost:8000
+   http://localhost:52929
    ```
 
 ### Manual Docker Deployment
@@ -120,8 +120,10 @@ The script will:
 
 2. Run the container:
    ```bash
-   docker run --rm -p 8000:8000 skguitar
+   docker run --rm -p 52929:8000 skguitar
    ```
+
+Otherwise, run `deploy.sh` which runs the steps above and some additional informational steps for you.
 
 ## Usage
 
