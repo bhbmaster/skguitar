@@ -111,9 +111,9 @@ h1 {
 
 .fret-marker {
     position: absolute;
-    width: 20px;
+    /* width: 20px;
     height: 20px;
-    border-radius: 50%;
+    border-radius: 50%; */ /* Set inside guitar.js */
     background-color: #d4af37;
     display: flex;
     align-items: center;

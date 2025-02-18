@@ -340,6 +340,8 @@ class Guitar {
         const selectedNotesArray = Array.from(this.selectedNotes);
         const matchingScales = [];
 
+        console.log("Selected notes for Matching Scales:", this.notes)
+
         for (let rootNote of this.notes) {
             for (let [scaleName, scalePattern] of Object.entries(this.scales)) {
                 const scaleNotes = scalePattern.map(interval => 
