@@ -54,6 +54,16 @@ docker run --name $APP_NAME -d --rm -p $PORT:$INTERNAL_PORT $APP_NAME
 echo "Container started!"
 echo "Application is running at: http://localhost:$PORT"
 
+# Wait for logs to show
+echo "Wait 2 second"
+sleep 2
+
 # Print logs
 echo "Container logs:"
 docker logs $APP_NAME
+
+# Open browser
+echo "Open browser to:"
+echo "http://localhost:$PORT/"
+
+# EOF
