@@ -340,15 +340,18 @@ class Guitar {
         const selectedNotesArray = Array.from(this.selectedNotes);
         const matchingScales = [];
 
-        console.log("Selected notes for Matching Scales:", this.notes)
+        console.log("- findMatchingScales -> selectedNotesArray:", selectedNotesArray)
+        console.log("- Object.entries(this.scales:", Object.entries(this.scales))
 
-        for (let rootNote of this.notes) {
-            for (let [scaleName, scalePattern] of Object.entries(this.scales)) {
+        for (let rootNote of this.notes) { // for each 12 notes
+            for (let [scaleName, scalePattern] of Object.entries(this.scales)) { // go thru each scale
                 const scaleNotes = scalePattern.map(interval => 
                     this.notes[(this.notes.indexOf(rootNote) + interval) % 12]
                 );
+                console.log(`- 🎸 rootNote & scaleName: ${rootNote} ${scaleName} - scalePattern: ${scalePattern} and scaleNotes: ${scaleNotes}`)
 
-                if (selectedNotesArray.every(note => scaleNotes.includes(note))) {
+                if (selectedNotesArray.every(note => scaleNotes.includes(note))) { // check selectedNotesArray against scaleNotes
+                    console.log(`- ✅ matched: ${rootNote} ${scaleName}`)
                     matchingScales.push(`${rootNote} ${scaleName}`);
                 }
             }
