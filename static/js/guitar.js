@@ -466,7 +466,10 @@ class Guitar {
             this.playNoteInTunerMode(synth, noteValue, frequency);
         } else {
             synth.triggerAttackRelease(noteValue, '2n');
-            this.activeNotes.add({ synth, note: noteValue });
+            const noteInfo = { synth, note: noteValue };
+            this.activeNotes.add(noteInfo);
+            // Remove the note from the active set once it has finished playing
+            setTimeout(() => this.activeNotes.delete(noteInfo), 2000);
         }
     }
 }
