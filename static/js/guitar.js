@@ -109,7 +109,7 @@ class Guitar {
                     // Calculate position based on fret number
                     const fretSpacing = 36*3;  // Horizontal Space between fret 3,5,6,9,1
                     const noteOffset = 19*19.8;   // Horizontal Distance from left edge to 3rd fret
-                    const stringSpacing = 25; // Verticle Space between strings
+                    const stringSpacing = 25; // Vertical space between strings
                     const verticalOffset = stringSpacing;
                     
                     markerContainer.style.left = `${(fretSpacing * (fret-3)) + noteOffset}px`;
