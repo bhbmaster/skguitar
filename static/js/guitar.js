@@ -474,4 +474,20 @@ class Guitar {
 // Initialize the guitar when the page loads
 window.addEventListener('load', () => {
     new Guitar();
+
+    const themeSelect = document.getElementById('theme');
+    const applyTheme = (theme) => {
+        document.body.classList.toggle('dark-theme', theme === 'dark');
+    };
+
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    applyTheme(savedTheme);
+    if (themeSelect) {
+        themeSelect.value = savedTheme;
+        themeSelect.addEventListener('change', (e) => {
+            const newTheme = e.target.value;
+            applyTheme(newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+    }
 });
