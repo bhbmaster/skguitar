@@ -1,13 +1,11 @@
 #!/bin/bash
+set -euo pipefail
 
 # Configuration
 APP_NAME="skguitar-app"
 INTERNAL_PORT=52929  # Port inside the container
-START_PORT=8000     # Starting external port to try
-MAX_PORT=8020      # Maximum port to try
-
-# Update app.py to use the internal port
-sed -i "s/port=[0-9]*/port=$INTERNAL_PORT/" app.py
+START_PORT=8000      # Starting external port to try
+MAX_PORT=8020        # Maximum port to try
 
 # Function to check if a port is in use
 is_port_in_use() {
@@ -18,9 +16,9 @@ is_port_in_use() {
 # Function to find an available port
 find_available_port() {
     local port=$START_PORT
-    while [ $port -le $MAX_PORT ]; do
-        if ! is_port_in_use $port; then
-            echo $port
+    while [ "$port" -le "$MAX_PORT" ]; do
+        if ! is_port_in_use "$port"; then
+            echo "$port"
             return 0
         fi
         ((port++))
@@ -36,11 +34,11 @@ docker ps -aq --filter "name=$APP_NAME" | xargs -r docker rm
 
 # Remove existing image
 echo "Removing existing image..."
-docker rmi -f $APP_NAME 2>/dev/null
+docker rmi -f "$APP_NAME" 2>/dev/null || true
 
 # Build new image
 echo "Building new image..."
-docker build -t $APP_NAME .
+docker build -t "$APP_NAME" .
 
 # Find available port
 PORT=$(find_available_port)
@@ -48,7 +46,7 @@ echo "Using port: $PORT"
 
 # Run the container
 echo "Starting container..."
-docker run --name $APP_NAME -d --rm -p $PORT:$INTERNAL_PORT $APP_NAME
+docker run --name "$APP_NAME" -d --rm -e PORT="$INTERNAL_PORT" -p "$PORT:$INTERNAL_PORT" "$APP_NAME"
 
 # Print status
 echo "Container started!"
@@ -60,10 +58,8 @@ sleep 2
 
 # Print logs
 echo "Container logs:"
-docker logs $APP_NAME
+docker logs "$APP_NAME"
 
 # Open browser
 echo "Open browser to:"
 echo "http://localhost:$PORT/"
-
-# EOF

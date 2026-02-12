@@ -106,6 +106,10 @@ The script will:
    python app.py
    ```
 
+   Optional environment variables:
+   - `PORT` (default: `52929`)
+   - `FLASK_DEBUG` (`true` or `false`, default: `false`)
+
 3. Open your browser and navigate to:
    ```
    http://localhost:52929
@@ -120,7 +124,7 @@ The script will:
 
 2. Run the container:
    ```bash
-   docker run --rm -p 52929:8000 skguitar
+   docker run --rm -e PORT=52929 -p 52929:52929 skguitar
    ```
 
 Otherwise, run `deploy.sh` which runs the steps above and some additional informational steps for you.

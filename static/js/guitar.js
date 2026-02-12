@@ -340,18 +340,14 @@ class Guitar {
         const selectedNotesArray = Array.from(this.selectedNotes);
         const matchingScales = [];
 
-        console.log("- findMatchingScales -> selectedNotesArray:", selectedNotesArray)
-        console.log("- Object.entries(this.scales:", Object.entries(this.scales))
 
         for (let rootNote of this.notes) { // for each 12 notes
             for (let [scaleName, scalePattern] of Object.entries(this.scales)) { // go thru each scale
                 const scaleNotes = scalePattern.map(interval => 
                     this.notes[(this.notes.indexOf(rootNote) + interval) % 12]
                 );
-                console.log(`- 🎸 rootNote & scaleName: ${rootNote} ${scaleName} - scalePattern: ${scalePattern} and scaleNotes: ${scaleNotes}`)
 
                 if (selectedNotesArray.every(note => scaleNotes.includes(note))) { // check selectedNotesArray against scaleNotes
-                    console.log(`- ✅ matched: ${rootNote} ${scaleName}`)
                     matchingScales.push(`${rootNote} ${scaleName}`);
                 }
             }
@@ -376,10 +372,6 @@ class Guitar {
         // where n is the number of semitones from A4 (440 Hz)
         const frequency = 440 * Math.pow(2, semitonesFromA4 / 12);
 
-        // Log frequency info for debugging
-        console.log(`Note: ${note}${octave}`);
-        console.log(`Semitones from A4: ${semitonesFromA4}`);
-        console.log(`Calculated frequency: ${frequency.toFixed(2)} Hz`);
 
         return frequency;
     }
@@ -433,7 +425,6 @@ class Guitar {
         this.currentFret = parseInt(clickedElement.dataset.fret);
         const currentOctave = parseInt(clickedElement.dataset.octave);
         
-        console.log(`Playing string ${stringNum}, fret ${this.currentFret}, note ${note}, octave ${currentOctave}`);
         const frequency = this.getNoteFrequency(note, currentOctave);
         
         // Update frequency display
